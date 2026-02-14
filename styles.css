@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+}
+
+/* 💕 Tarjeta romántica */
+.card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(255, 0, 100, 0.3);
+    text-align: center;
+    width: 350px;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+.card h1 {
+    color: #e91e63;
+    margin-bottom: 20px;
+}
+
+.mensaje {
+    margin-top: 15px;
+    color: #c2185b;
+    font-weight: bold;
+}
+
+/* Imagen */
+#miImagen {
+    width: 100%;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#miImagen:hover {
+    transform: scale(1.05);
+}
+
+/* 💗 Corazones flotando */
+.hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hearts::before,
+.hearts::after {
+    content: "💖 💕 💘 💗 💓 💞";
+    position: absolute;
+    font-size: 30px;
+    animation: float 10s linear infinite;
+    white-space: nowrap;
+}
+
+.hearts::after {
+    top: 50%;
+    animation-duration: 15s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Animación fade */
+.fade {
+    opacity: 0;
+}
+/* 🌹 Flores flotando */
+.flowers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.flowers::before,
+.flowers::after {
+    content: "🌸 🌷 🌹 🌺 🌼";
+    position: absolute;
+    font-size: 28px;
+    animation: fall 12s linear infinite;
+    white-space: nowrap;
+}
+
+.flowers::after {
+    left: 50%;
+    animation-duration: 18s;
+}
+
+/* Animación caída suave */
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(110%);
+    }
+}
+
+/* 🌺 Flores decorativas en esquinas */
+.card::before {
+    content: "🌹";
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 35px;
+}
+
+.card::after {
+    content: "🌸";
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    font-size: 35px;
+}
+/* 🐕 Perretes flotando */
+.dogs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.dogs::before,
+.dogs::after {
+    content: "🐶 🐾 🐕 🦴 🐩";
+    position: absolute;
+    font-size: 30px;
+    white-space: nowrap;
+    animation: moveDogs 20s linear infinite;
+}
+
+.dogs::after {
+    top: 60%;
+    animation-duration: 25s;
+}
+
+/* Movimiento lateral suave */
+@keyframes moveDogs {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+/* 🐾 Perros decorativos en la tarjeta */
+.card {
+    position: relative;
+}
+
+.card .mensaje::before {
+    content: "🐶 ";
+}
+
+.card::before {
+    content: "🐕";
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 40px;
+}
+
+.card::after {
+    content: "🐩";
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    font-size: 40px;
+}
+/* Contenedor de imagen + botones */
+.image-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botones flor */
+.flower-btn {
+    position: absolute;
+    background: #ff80ab;
+    border: none;
+    font-size: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Posición izquierda */
+.flower-btn.left {
+    left: -70px;
+}
+
+/* Posición derecha */
+.flower-btn.right {
+    right: -70px;
+}
+
+/* Hover */
+.flower-btn:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* Color activo */
+.flower-btn.active {
+    background: #ff4081;
+    transform: scale(1.3);
+}
+
+
+/* Fondo floral dinámico */
+.flower-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Cada flor */
+.flower-bg span {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.2;
+    animation: floatFlowers linear infinite;
+}
+
+/* Animación de movimiento vertical y horizontal */
+@keyframes floatFlowers {
+    0% {
+        transform: translateY(100vh) translateX(0);
+    }
+    50% {
+        transform: translateY(50vh) translateX(20px);
+    }
+    100% {
+        transform: translateY(-10vh) translateX(-20px);
+    }
+}
